@@ -20,7 +20,8 @@ Once you have your updates.
 
     vagrant up --provision
 
-You could already `sftp`/`ssh` via `vagrant` user with read-write access, but now you can also access:
+This process will download the box file, and provision the server with the *Vagrant* `chef_zero` provisioner using the `sharebox` cookbook embedded in this repo to configure a few other sharing services in a default configuration. You could already `sftp`/`ssh` via `vagrant` user with read-write access, but now you can also access:
+
  * \\\&lt;box_ip&gt;\srv
  * nfs://&lt;box_ip&gt;/srv
  * http(s)://&lt;box_ip&gt;/

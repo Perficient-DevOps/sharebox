@@ -11,21 +11,22 @@ Vagrant.configure("2") do |config|
     config.cache.scope = :box
   end
 
-  config.vm.box_check_update = false
+  config.vm.box_check_update = true
   config.vm.box = "bento/ubuntu-14.04"
-  config.vm.network "private_network", ip: "192.168.56.200"
-  config.vm.synced_folder "c:/srv", "/srv"
+  config.vm.network "private_network", ip: "#{ box_ip }"
+  config.vm.synced_folder "#{ local_share }", "/srv"
 
   # Configured to be a small foot print here.
   config.vm.provider "virtualbox" do |vb|
     vb.gui = false
-    vb.memory = "512"
+    vb.memory = "256"
   end
 
   # Do the chef provisioning
-  config.vm.provision :chef_solo do |chef|
+  config.vm.provision :chef_zero do |chef|
     # Paths to your cookbooks (on the host)
     chef.cookbooks_path = ["cookbooks"]
+    chef.nodes_path = 'nodes'
     # Add chef recipes
     recipes = [ 'sharebox' ]
     recipes.each do | recipe |

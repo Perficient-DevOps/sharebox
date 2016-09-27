@@ -9,7 +9,7 @@ file '/etc/nginx/sites-enabled/default' do
     server {
       listen #{ node['sharebox']['http']['port'] } default_server;
       listen [::]:#{ node['sharebox']['http']['port'] } default_server ipv6only=on;
-      root #{ node['sharebox']['share'] };
+      root #{ node['sharebox']['share']['path'] };
       index index.html index.htm;
       server_name localhost;
       location / {
