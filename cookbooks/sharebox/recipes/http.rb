@@ -7,8 +7,8 @@ apt_package 'nginx'
 file '/etc/nginx/sites-enabled/default' do
   content <<-EOF.gsub(/^ {4}/, '')
     server {
-      listen 80 default_server;
-      listen [::]:80 default_server ipv6only=on;
+      listen #{ node['sharebox']['http']['port'] } default_server;
+      listen [::]:#{ node['sharebox']['http']['port'] } default_server ipv6only=on;
       root #{ node['sharebox']['share'] };
       index index.html index.htm;
       server_name localhost;

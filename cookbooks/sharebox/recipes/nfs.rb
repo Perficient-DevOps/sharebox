@@ -9,6 +9,7 @@ template '/etc/exports' do
   action :create
   backup false
   source 'exports.erb'
+  variables( :share_path => node['sharebox']['share']['path'] )
 end
 
 service 'nfs-kernel-server' do

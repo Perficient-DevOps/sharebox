@@ -8,6 +8,10 @@ template '/etc/samba/smb.conf' do
   action :create
   backup false
   source 'smb.conf.erb'
+  variables(
+    :share_name => node['sharebox']['share']['name'],
+    :share_path => node['sharebox']['share']['path']
+    )
 end
 
 # Enable service and restart samba if it happens to already be running

@@ -8,8 +8,8 @@ Possible to expose it via a bridged interface if you prefer by modifying the `Va
 
 Grab the source code.
 
-    git clone https://github.com/sgwilbur/share-box
-    cd share-box
+    git clone https://github.com/Perficient-DevOps/sharebox.git
+    cd sharebox
 
 Modify `Vagrantfile` to some useful values for:
 
