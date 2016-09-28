@@ -2,11 +2,13 @@
 # vi: set ft=ruby :
 
 Vagrant.configure("2") do |config|
-
+  ############################################################
   # TODO: Update to your desired values
+  ############################################################
   local_share = 'c:/srv'
   box_ip      = '192.168.56.200'
-
+  ############################################################
+  
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
