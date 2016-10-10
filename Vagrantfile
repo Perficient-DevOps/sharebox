@@ -5,15 +5,17 @@ Vagrant.configure("2") do |config|
   ############################################################
   # TODO: Update to your desired values
   ############################################################
-  local_share = 'c:/srv'
-  box_ip      = '192.168.56.200'
+  local_share = '/srv'
+  box_ip      = '192.168.252.200'
   ############################################################
-  
+
   if Vagrant.has_plugin?("vagrant-cachier")
     config.cache.scope = :box
   end
 
-  config.vm.box_check_update = true
+  # TODO: Can I check if I am only first
+  config.vm.box_check_update = false
+
   config.vm.box = "bento/ubuntu-14.04"
   config.vm.network "private_network", ip: "#{ box_ip }"
   config.vm.synced_folder "#{ local_share }", "/srv"
