@@ -1,18 +1,35 @@
 # # encoding: utf-8
-
 # Inspec test for recipe sharebox::default
 
-# The Inspec reference, with examples and extensive documentation, can be
-# found at https://docs.chef.io/inspec_reference.html
-
-unless os.windows?
-  describe user('root') do
-    it { should exist }
-    skip 'This is an example test, replace with your own test.'
-  end
+## FTP
+describe port(21) do
+  it { should be_listening }
+  its('addresses') { should include '0.0.0.0' }
 end
 
+## HTTP
 describe port(80) do
-  it { should_not be_listening }
-  skip 'This is an example test, replace with your own test.'
+  it { should be_listening }
+  its('addresses') { should include '0.0.0.0' }
+end
+
+## NFS
+describe port(111) do
+  it { should be_listening }
+  its('addresses') { should include '0.0.0.0' }
+  its('protocols') { should include 'tcp'}
+  its('protocols') { should include 'udp'}
+end
+
+## Samba
+## TCP 139,445 UDP 137,138
+describe port(139) do
+  it { should be_listening }
+  its('addresses') { should include '0.0.0.0' }
+  its('protocols') { should include 'tcp' }
+end
+describe port(445) do
+  it { should be_listening }
+  its('addresses') { should include '0.0.0.0' }
+  its('protocols') { should include 'tcp' }
 end
